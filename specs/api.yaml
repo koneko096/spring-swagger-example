@@ -1,4 +1,4 @@
-swagger: '2.0'
+swagger: '3.0'
 info:
   description:
   version: 0.0.1-SNAPSHOT
