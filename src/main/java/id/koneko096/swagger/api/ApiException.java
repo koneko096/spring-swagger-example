@@ -1,6 +1,6 @@
 package id.koneko096.swagger.api;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2018-11-18T00:23:58.154+07:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2018-11-20T18:37:09.423+07:00")
 
 public class ApiException extends Exception{
     private int code;

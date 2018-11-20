@@ -2,25 +2,25 @@ swagger: '3.0'
 info:
   description:
   version: 0.0.1-SNAPSHOT
-  title: Swagger Employee Demo
+  title: Swagger Citizen API
   license:
     name: Apache 2.0
     url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
 host: localhost
 basePath: /v1
 tags:
-  - name: employee
-    description: Everything about your Employee
+  - name: citizen
+    description: Everything about your Citizen
 schemes:
   - http #security schemes
 paths:
-  '/employee':
+  '/citizen':
     get:
       tags:
-      - employee
-      summary: List employees
-      description: Returns list of Employee
-      operationId: getAllEmployees
+      - citizen
+      summary: List citizens
+      description: Returns list of Citizen
+      operationId: getAllCitizens
       produces:
       - application/json
       responses:
@@ -29,13 +29,13 @@ paths:
           schema:
             type: array
             items:
-              $ref: '#/definitions/Employee'
+              $ref: '#/definitions/Citizen'
     post:
       tags:
-      - employee
-      summary: Create employee
-      description: Creates a new Employee
-      operationId: createEmployee
+      - citizen
+      summary: Create citizen
+      description: Creates a new Citizen
+      operationId: createCitizen
       consumes:
       - application/json
       - application/xml
@@ -47,10 +47,10 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Employee'
+              $ref: '#/components/schemas/Citizen'
           application/xml:
             schema:
-              $ref: '#/components/schemas/Employee'
+              $ref: '#/components/schemas/Citizen'
           text/plain:
             schema:
               type: string
@@ -58,22 +58,22 @@ paths:
         '200':
           description: successful operation
           schema:
-            $ref: '#/definitions/Employee'
+            $ref: '#/definitions/Citizen'
         '400':
           description: Invalid input
-  '/employee/{employeeId}':
+  '/citizen/{citizenId}':
     get:
       tags:
-        - employee
-      summary: Find employee by ID
-      description: Returns a single Employee
-      operationId: getEmployeeDetails
+        - citizen
+      summary: Find citizen by ID
+      description: Returns a single Citizen
+      operationId: getCitizenDetails
       produces:
         - application/json
       parameters:
-        - name: employeeId
+        - name: citizenId
           in: path
-          description: ID of Employee to return
+          description: ID of Citizen to return
           required: true
           type: integer
           format: int64
@@ -81,21 +81,21 @@ paths:
         '200':
           description: successful operation
           schema:
-            $ref: '#/definitions/Employee'
+            $ref: '#/definitions/Citizen'
         '400':
-          description: Invalid Employee ID supplied
+          description: Invalid Citizen ID supplied
         '404':
-          description: Employee not found
+          description: Citizen not found
     delete:
       tags:
-      - employee
-      summary: Delete employee by ID
-      description: Deletes a single Employee
-      operationId: deleteEmployee
+      - citizen
+      summary: Delete citizen by ID
+      description: Deletes a single Citizen
+      operationId: deleteCitizen
       parameters:
-      - name: employeeId
+      - name: citizenId
         in: path
-        description: ID of Employee to delete
+        description: ID of Citizen to delete
         required: true
         type: integer
         format: int64
@@ -103,24 +103,24 @@ paths:
         '200':
           description: successful operation
         '400':
-          description: Invalid Employee ID supplied
+          description: Invalid Citizen ID supplied
         '404':
-          description: Employee not found
+          description: Citizen not found
     put:
       tags:
-      - employee
-      summary: Update employee
-      description: Updates an existing Employee
-      operationId: updateEmployee
+      - citizen
+      summary: Update citizen
+      description: Updates an existing Citizen
+      operationId: updateCitizen
       consumes:
       - application/json
       - application/xml
       produces:
       - application/json
       parameters:
-      - name: employeeId
+      - name: citizenId
         in: path
-        description: ID of Employee to update
+        description: ID of Citizen to update
         required: true
         type: integer
         format: int64
@@ -130,10 +130,10 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Employee'
+              $ref: '#/components/schemas/Citizen'
           application/xml:
             schema:
-              $ref: '#/components/schemas/Employee'
+              $ref: '#/components/schemas/Citizen'
           text/plain:
             schema:
               type: string
@@ -141,13 +141,13 @@ paths:
         '200':
           description: successful operation
           schema:
-            $ref: '#/definitions/Employee'
+            $ref: '#/definitions/Citizen'
         '400':
           description: Invalid input
         '404':
-          description: Employee not found
+          description: Citizen not found
 definitions:
-  Employee:
+  Citizen:
     type: object
     properties:
       id:
@@ -155,9 +155,13 @@ definitions:
         format: int64
       firstName:
         type: string
-        description: Employee First Name
+        description: Citizen First Name
       lastName:
         type: string
-        description: Employee Last Name
+        description: Citizen Last Name
+      birthday:
+        type: string
+        format: date
+        description: Citizen Birthday
     xml:
-      name: employee
+      name: citizen
